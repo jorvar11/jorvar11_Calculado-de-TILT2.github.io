@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Calculadora de Tilt</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="Imagen/png" href="F:\Antena tilt-2\antena_Icom.png"/>
+</head>
+<body>
+    <header>
+        <h1>Calculadora de Tilt y Antenas</h1>
+    </header>
+
+    <main>
+        <section id="tilt-calculation">
+            <h2>Cálculo de Tilt</h2>
+            <div>
+                <label for="y">Altura (Y):</label>
+                <input type="number" id="y" step="0.01">
+            </div>
+            <div>
+                <label for="xu">Distancia Horizontal (Xm):</label>
+                <input type="number" id="xu" step="0.01">
+            </div>
+            <div>
+                <label for="vbm">Ancho de Haz Vertical (VBM):</label>
+                <input type="number" id="vbm" step="0.01">
+            </div>
+            <button onclick="calcularTilt()">Calcular Tilt</button>
+            <p>Middle Tilt (Teta M): <span id="tetaM">-</span>°</p>
+            <p>Upper Tilt (Teta U): <span id="tetaU">-</span>°</p>
+            <p>Lower Tilt (Teta L): <span id="tetaL">-</span>°</p>
+        </section>
+
+        <section id="xu-calculation">
+            <h2>Cálculo de X</h2>
+            <div>
+                <label for="y2">Altura (Y):</label>
+                <input type="number" id="y2" step="0.01">
+            </div>
+            <div>
+                <label for="tetaM2">Tilt (Teta X):</label>
+                <input type="number" id="tetaM2" step="0.01">
+            </div>
+            <button onclick="calcularXu()">Calcular X</button>
+            <p>Distancia Máxima (X): <span id="xuResult">-</span> m</p>
+        </section>
+
+
+
+         <section id="Imagen">
+				               <h2>Referencia de Calculo</h2>
+				               <div class="reference-image">
+				               <img src="img_REF.jpg" alt="Diagrama de calculo de tilt">
+		                   </div>
+        </section>
+        <section id="database-section">
+		    <h2>Cargar Base de Datos de Antenas</h2>
+		    <div>
+		        <label for="excelFile">Seleccionar archivo Excel (.xlsx):</label>
+		        <input type="file" id="excelFile" accept=".xlsx" onchange="loadExcel(event)">
+		    </div>
+		    <div>
+		        <label for="model">Modelo:</label>
+		        <input type="text" id="model">
+		        <button onclick="filterAntennaData()">Filtrar</button>
+		    </div>
+		    <div id="antennaResults"></div>
+		</section>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Calculadora de Tilt</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
